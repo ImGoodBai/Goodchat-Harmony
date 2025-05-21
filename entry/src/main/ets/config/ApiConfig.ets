@@ -11,7 +11,7 @@ interface ApiServiceConfig {
 
 export default class ApiConfig {
   // API密钥
-  static readonly API_KEY: string = 'a97309e6-5dfa-4b76-afd9-7ef5a8487726';
+  static readonly API_KEY: string = 'a97309e6-5dfa-4b76-afd9-xxxxxxxx';
   static readonly API_BASE: string = 'https://ark.cn-beijing.volces.com/api/v3';
   
   // 聊天服务配置
