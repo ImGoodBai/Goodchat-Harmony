@@ -1,5 +1,19 @@
 # GoodChat鸿蒙版
-GoodChat是一款基于鸿蒙系统的智能助手应用，集成了聊天、图像生成和搜索功能，为用户提供全方位的AI服务体验。
+GoodChat鸿蒙版，全球首款支持鸿蒙桌面（纯血版）系统的Agent应用，集成了聊天、图像生成和搜索功能，为用户提供全方位的AI服务体验。
+
+## 应用截图
+
+### 手机版
+
+<img src="./res/phone.jpg" width="300" alt="手机版截图">
+
+### 平板版
+
+<img src="./res/pad.jpg" width="500" alt="平板版截图">
+
+### 电脑版
+
+<img src="./res/com.jpg" width="700" alt="电脑版截图">
 
 ## 功能特点
 
