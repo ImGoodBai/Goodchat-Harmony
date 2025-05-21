@@ -1,4 +1,5 @@
 import http from '@ohos.net.http';
+import ApiConfig from '../config/ApiConfig';
 
 // 定义消息接口
 interface Message {
@@ -39,9 +40,10 @@ interface ResponseData {
 }
 
 export class LlmService {
-  private static readonly API_KEY: string = 'a97309e6-5dfa-4b76-afd9-7ef5a8487726';
-  private static readonly API_BASE: string = 'https://ark.cn-beijing.volces.com/api/v3';
-  private static readonly MODEL: string = 'doubao-1-5-pro-256k-250115';
+  // 使用配置文件中的API密钥和聊天服务配置
+  private static readonly API_KEY: string = ApiConfig.API_KEY;
+  private static readonly API_URL: string = ApiConfig.CHAT_API.URL;
+  private static readonly MODEL: string = ApiConfig.CHAT_API.MODEL;
 
   /**
    * 调用LLM API获取回复
@@ -82,7 +84,7 @@ export class LlmService {
       
       // 发送请求
       let response = await httpRequest.request(
-        `${LlmService.API_BASE}/chat/completions`,
+        LlmService.API_URL,
         options
       );
       

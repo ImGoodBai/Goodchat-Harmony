@@ -1,4 +1,5 @@
 import http from '@ohos.net.http';
+import ApiConfig from '../config/ApiConfig';
 
 // 定义图像生成请求接口
 interface ImageGenerationRequest {
@@ -30,9 +31,10 @@ interface ImageGenerationResponse {
 }
 
 export class ImageService {
-  private static readonly API_KEY: string = 'a97309e6-5dfa-4b76-afd9-7ef5a8487726';
-  private static readonly API_BASE: string = 'https://ark.cn-beijing.volces.com/api/v3';
-  private static readonly MODEL: string = 'doubao-seedream-3-0-t2i-250415';
+  // 使用配置文件中的API密钥和图像服务配置
+  private static readonly API_KEY: string = ApiConfig.API_KEY;
+  private static readonly API_URL: string = ApiConfig.IMAGE_API.URL;
+  private static readonly MODEL: string = ApiConfig.IMAGE_API.MODEL;
 
   /**
    * 调用豆包画图API生成图像
@@ -81,7 +83,7 @@ export class ImageService {
       
       // 发送请求
       let response = await httpRequest.request(
-        `${ImageService.API_BASE}/images/generations`,
+        ImageService.API_URL,
         options
       );
       

@@ -1,4 +1,5 @@
 import http from '@ohos.net.http';
+import ApiConfig from '../config/ApiConfig';
 
 // 定义消息接口
 interface Message {
@@ -29,9 +30,10 @@ interface SearchResponse {
 }
 
 export class SearchService {
-  private static readonly API_KEY: string = 'a97309e6-5dfa-4b76-afd9-7ef5a8487726';
-  private static readonly API_BASE: string = 'https://ark.cn-beijing.volces.com/api/v3';
-  private static readonly MODEL: string = 'bot-20250521164120-wklvq';
+  // 使用配置文件中的API密钥和搜索服务配置
+  private static readonly API_KEY: string = ApiConfig.API_KEY;
+  private static readonly API_URL: string = ApiConfig.SEARCH_API.URL;
+  private static readonly MODEL: string = ApiConfig.SEARCH_API.MODEL;
 
   /**
    * 调用搜索API获取回复
@@ -85,7 +87,7 @@ export class SearchService {
       
       // 发送请求
       let response = await httpRequest.request(
-        `${SearchService.API_BASE}/bots/chat/completions`,
+        SearchService.API_URL,
         options
       );
       
