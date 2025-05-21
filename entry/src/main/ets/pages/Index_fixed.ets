@@ -15,6 +15,70 @@ struct Index {
   @State modelType: string = 'chat'; // 'chat', 'image' 或 'search'
   @State imageUrl: string = '';
 
+  /**
+   * 获取当前模式的图标
+   */
+  getModelIcon(): string {
+    switch (this.modelType) {
+      case 'chat':
+        return '🤖'; // 机器人
+      case 'image':
+        return '🎨'; // 画笔
+      case 'search':
+        return '🔍'; // 放大镜
+      default:
+        return '🤖';
+    }
+  }
+  
+  /**
+   * 获取当前模式的标题
+   */
+  getModelTitle(): string {
+    switch (this.modelType) {
+      case 'chat':
+        return '与智能助手对话';
+      case 'image':
+        return '生成AI图像';
+      case 'search':
+        return '实时搜索信息';
+      default:
+        return '与智能助手对话';
+    }
+  }
+  
+  /**
+   * 获取输入框提示文本
+   */
+  getInputPlaceholder(): string {
+    switch (this.modelType) {
+      case 'chat':
+        return '请输入您的问题...';
+      case 'image':
+        return '请输入图像描述...';
+      case 'search':
+        return '请输入搜索内容...';
+      default:
+        return '请输入您的问题...';
+    }
+  }
+  
+  /**
+   * 获取按钮文本
+   */
+  getButtonText(): string {
+    switch (this.modelType) {
+      case 'chat':
+        return '发送';
+      case 'image':
+        return '生成';
+      case 'search':
+        return '搜索';
+      default:
+        return '发送';
+    }
+  }
+
   build() {
     Column() {
       // 内容区域限制最大宽度
@@ -269,7 +333,7 @@ struct Index {
         }
       }
       .width('100%')
-      .constraintSize({maxWidth: 900})
+      .maxWidth('900px')
       .alignSelf(ItemAlign.Center)
     }
     .width('100%')
@@ -277,59 +341,9 @@ struct Index {
     .backgroundColor('#ffffff')
   }
 
-  // 辅助方法
-  getModelIcon(): string {
-    switch (this.modelType) {
-      case 'chat':
-        return '🤖'; // 机器人
-      case 'image':
-        return '🎨'; // 画笔
-      case 'search':
-        return '🔍'; // 放大镜
-      default:
-        return '🤖';
-    }
-  }
-  
-  getModelTitle(): string {
-    switch (this.modelType) {
-      case 'chat':
-        return '与智能助手对话';
-      case 'image':
-        return '生成AI图像';
-      case 'search':
-        return '实时搜索信息';
-      default:
-        return '与智能助手对话';
-    }
-  }
-  
-  getInputPlaceholder(): string {
-    switch (this.modelType) {
-      case 'chat':
-        return '请输入您的问题...';
-      case 'image':
-        return '请输入图像描述...';
-      case 'search':
-        return '请输入搜索内容...';
-      default:
-        return '请输入您的问题...';
-    }
-  }
-  
-  getButtonText(): string {
-    switch (this.modelType) {
-      case 'chat':
-        return '发送';
-      case 'image':
-        return '生成';
-      case 'search':
-        return '搜索';
-      default:
-        return '发送';
-    }
-  }
-
+  /**
+   * 发送消息并获取AI回复
+   */
   async sendMessage() {
     if (this.inputText.trim() === '') {
       this.errorMessage = this.getInputPlaceholder();

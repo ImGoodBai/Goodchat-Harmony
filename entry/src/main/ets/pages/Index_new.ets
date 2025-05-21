@@ -269,7 +269,7 @@ struct Index {
         }
       }
       .width('100%')
-      .constraintSize({maxWidth: 900})
+      .maxWidth('900px')
       .alignSelf(ItemAlign.Center)
     }
     .width('100%')
