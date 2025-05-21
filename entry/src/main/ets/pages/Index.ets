@@ -7,7 +7,7 @@ import ChatMessage from '../models/ChatMessage';
 @Component
 struct Index {
   @State inputText: string = '';
-  @State title: string = '智能助手';
+  @State title: string = 'GoodChat鸿蒙版';
   @State isLoading: boolean = false;
   @State errorMessage: string = '';
   @State chatMessages: ChatMessage[] = [];
